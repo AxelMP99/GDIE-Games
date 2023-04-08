@@ -1,0 +1,338 @@
+.icono{
+    max-height: 30px;
+    max-width: 30px;
+}
+
+.lock{
+    max-height: 20px;
+    max-width: 20px;
+}
+
+.seleccionado{
+    background-color: #d2f1d2;
+}
+
+.tickFiltros{
+    height: 20px;
+    width: 20px;
+}
+
+.botones{
+    width: 50px;
+}
+
+.titulosInfo{
+    font-size: 1.2rem;
+    color: black;
+    font-weight: 500;
+}
+
+.textoInfo{
+    color: black;
+}
+
+.filtroActivo{
+    background-color: #ddffdd;
+}
+
+.greenHighlight{
+    color: green;
+}
+
+.greenHighlight:hover{
+    color: lawngreen;
+}
+
+.abajo{
+    text-align: center;
+}
+
+.justificado{
+    text-align: justify;
+}
+
+.elementoQuiz{
+    width: 100%;
+    height: 80px;
+    margin: 5px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-auto-flow: column;
+    color: black;
+    font-size: 1.2rem;
+}
+
+.botonQuiz{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    width: 150px;
+    height: 50px;
+    margin: 15px;
+    background-image: linear-gradient(45deg, green, greenyellow);
+    cursor: pointer;
+}
+
+.botonQuiz:hover{
+    background-image: linear-gradient(45deg, greenyellow, turquoise);
+}
+
+
+.disable-select {
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
+  }
+
+
+/* Aviso flotante (https://codepen.io/Dinamo/pen/rNVOZmr) */
+.myAlert-top{
+    position: fixed;
+    top: 90px; 
+    left: 25%;
+    width: 50%;
+}
+
+#panPrincipal{
+    max-width: 1425px;
+}
+
+#margenGrande{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#filtros{
+    height: 3rem;
+}
+
+#name-col{
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+#panel-der{
+    margin-left: 2px;
+    margin-bottom: 5px;
+}
+
+#info{
+    margin-right: 20px;
+    min-width: 350px; 
+}
+
+#bottom-container{
+    margin-top: 30px;
+    min-height: 200px;
+}
+
+#map{
+    min-height: 200px;
+}
+
+#quiz{
+    margin-right: 30px;
+	display: grid;
+	place-items: center;
+	min-height: 150px;
+	border: 6px solid;
+	padding: 1rem;
+    border-image: linear-gradient(45deg, green, greenyellow) 1;
+
+    /*nuevo*/
+    position: relative;
+}
+
+/* #quiz:hover{
+    /* border-image: linear-gradient(45deg, greenyellow, green) 1; 
+    border-image: linear-gradient(45deg, greenyellow, turquoise) 1;
+} */
+
+#inicioQuiz{
+    height: 70px;
+    width: 250px;
+    font-size: 1.6rem;
+    display: grid;
+	place-items: center;
+    background-image: linear-gradient(45deg, green, greenyellow);
+    cursor: pointer;
+}
+
+#inicioQuiz:hover{
+    background-image: linear-gradient(45deg, greenyellow, turquoise);
+}
+
+#score{
+    padding-left: 10px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 50px;
+    width: 100px;
+    font-size: 1rem;
+    background-color: lightgreen;
+}
+
+#gitFooter{
+    font-size: 20px;
+}
+
+#faunaFooter{
+    font-size: 30px;
+}
+
+#footer{
+    margin-top: 50px;
+}
+
+/* Web responsive*/
+@media (max-width: 1500px) {
+
+}
+@media (max-width: 1250px) {
+    .elementoQuiz{
+        height: 70px;
+    }
+    #bottom-container{
+        max-width: 800px !important;
+    }
+    #quiz{
+        margin-right: 0px;
+        max-width: 800px;
+        min-width: 700px;
+        margin-bottom: 20px;
+    }
+    #inicioQuiz{
+        height: 50px;
+        width: 200px;
+        font-size: 1rem;
+    }
+    .botonQuiz{
+        width: 130px;
+        height: 45px;
+        margin: 5px;
+    }
+    #map{
+        width: 800px;
+    }
+    #filtros{
+        height: auto;
+    }
+    #cont-video-test{
+        width: 800px;
+    }
+    #videotest{
+        width: 800px;
+    }
+    #margenGrande{
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    #panel-der{
+        margin-top: 20px;
+        width: 800px;
+    }
+    #datos{
+        width: auto;
+        max-width: 200px;
+    }
+    #info{
+        width: 570px;
+    }
+    .myAlert-top{
+        left: 15%;
+        width: 70%;
+    }
+}
+@media (max-width: 990px) {
+    #panel-der{
+        margin-top: 20px;
+    }
+    #datos{
+        margin-top: 20px;
+    }
+}
+@media (max-width: 905px) {
+    #quiz{
+        min-width: 0px;
+    }
+    #gitFooter{
+        font-size: 15px;
+    }
+    
+    #faunaFooter{
+        font-size: 25px;
+    }
+
+    #score{
+        height: 40px;
+        width: 90px;
+        font-size: 0.8rem;
+    }
+}
+@media (max-width: 767px) {
+
+   /*  pendiente de cambio */
+.botonQuiz{
+    width: 125px;
+    height: 40px;
+    margin: 5px;
+}
+
+.elementoQuiz{
+    font-size: 1.2rem;
+}
+
+.myAlert-top{
+    left: 5%;
+    width: 90%;
+}
+}
+@media (max-width: 600px) {
+    .botonQuiz{
+        width: 100px;
+        height: 30px;
+        margin: 5px;
+    }
+    
+    .elementoQuiz{
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    #score{
+        height: 33px;
+        width: 70px;
+        font-size: 0.6rem;
+    }
+}
+@media (max-width: 500px) {
+    #info{
+        min-width: 200px; 
+    }
+    .botonQuiz{
+        width: 70px;
+        height: 25px;
+        margin: 5px;
+    }
+    
+    .elementoQuiz{
+        font-size: 0.8rem;
+        height: 40px;
+    }
+    #gitFooter{
+        font-size: 15px;
+    }
+    
+    #faunaFooter{
+        font-size: 20px;
+    }
+}
+@media (max-width: 400px) {
+
+}
+
+
+
