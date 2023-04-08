@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Meta informacion -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Games | Editor</title>
+    <link rel="icon" href="assets/logo.svg">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/logo.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/logo.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/logo.png">
+    <meta name="description" content="Un editor para introducir metadatos a cualquier vídeo de juegos." />
+    <meta name="author" content="Albert Mas">
+    <meta name="author" content="Sandu Bizu">
+    <meta name="author" content="Yash Asnani">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Navbar (https://colorlib.com/wp/template/website-menu-10/) -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/navbar/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="assets/navbar/css/style.css">
+    <script src="assets/navbar/js/jquery.sticky.js"></script>
+    <script src="assets/navbar/js/main.js"></script>
+    <!-- plyr -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css" />
+    <script src="https://cdn.plyr.io/3.6.12/plyr.polyfilled.js"></script>
+    <!-- Local -->
+    <link rel="stylesheet" href="css/style-player.css">
+    <link rel="stylesheet" href="css/style-footer.css">
+    <link rel="stylesheet" href="css/style-editor.css">
+    <script src="js/script-editor.js"></script>
+</head>
+
+<body id="cuerpo" class="bg" onload="loaded()">
+    <!-- Inicio Navbar -->
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <header class="site-navbar site-navbar-target bg-white" role="banner">
+        <div class="container">
+            <div class="row align-items-center position-relative">
+                <div class="col-lg-4">
+                    <nav class="site-navigation text-right ml-auto " role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                            <!-- <li class="active"><a href="index.html" class="nav-link">Home</a></li>
+                            <li><a href="project.html" class="nav-link">Projects</a></li>
+                            <li><a href="services.html" class="nav-link">Services</a></li> -->
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="site-logo">
+                        <a href="index2.html">Games</a>
+                    </div>
+                    <div class="ml-auto toggle-button d-inline-block d-lg-none"><a href="#"
+                            class="site-menu-toggle py-5 js-menu-toggle text-black"><span
+                                class="icon-menu h3 text-black"></span></a></div>
+                </div>
+                <div class="col-lg-4">
+                    <nav class="site-navigation text-left mr-auto " role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                            <li><a href="index2.html" class="nav-link">Visor</a></li>
+                            <li class="active"><a href="#" class="nav-link">Editor</a></li>
+                            <li><a href="comunicacion.html" class="nav-link">Comunicación</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Fin Navbar -->
+
+    <!-- Inicio Seleccion de Video -->
+    <div id="hola" class="container m-auto text-center mt-3">
+        <h3 class="mg-bt-sm-neg">Selecciona una de las opciones:</h3>
+        <small>(Leer <a href="#instrucciones">Instrucciones</a>)</small>
+        <div class="row mt-2">
+            <div class="col-md mb-2 mt-2">
+                <h5>Subir vídeo</h5>
+                <div id="file-input-div">
+                    <!-- <input class="max-w-files" type="file" id="file-input" accept="video/mp4"> -->
+                </div>
+            </div>
+
+            <div class="col-md mb-2 mt-2">
+                <h5>Elegir vídeo existente</h5>
+                <select class="col-6 max-w180 font-size-input-2 input-color-w" id="file-selector"
+                    onchange="cargarVideo(this)">
+                    <option value="default" selected disabled hidden>Elegir...</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <!-- Fin Seleccion de Video -->
+
+    <!-- Inicio Contenido Principal -->
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <!-- Columna vista previa -->
+            <div class="col-xxl-6 mb-5">
+                <div class="row text-center">
+                    <h4 class="col-7 text-end">Vista Previa</h4>
+                    <select class="col-5 max-w150 m font-size-input-2 input-color-w" id="cue-selector"
+                        onchange="irACue(this)" disabled>
+                        <option value="default" selected disabled hidden>Ir a...</option>
+                    </select>
+                </div>
+                <div class="row text-center mt-4">
+                    <div id="wrapper-video" class="wrapper-video">
+                        <video id="miVideo" class="w-100" playsinline controls data-poster="">
+                            <!-- <source id="video-src" src="assets/animales.mp4" type="video/mp4" /> -->
+                            <!-- <source src="/path/to/video.webm" type="video/webm" /> -->
+
+                            <!-- Captions are optional -->
+                            <!-- <track id="track" kind="metadata" label="Metadatos" src="assets/ejemplo.vtt" default /> -->
+                        </video>
+                        <div id="alerta-no-video" class="aviso-centered alert alert-danger show" role="alert">
+                            <strong>Aviso: </strong>No hay ningún vídeo cargado. Selecciona una de las opciones.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Columna metadatos actuales -->
+            <div class="col-xxl-6 text-center">
+                <div class="row text-center mb-3">
+                    <h4 class="col-7 text-end">Datos Actuales</h4>
+                    <select class="col-5 max-w120 m font-size-input-2 input-color-w" id="metadata-selector"
+                        onchange="cambiarTipoMetadatos()" disabled>
+                        <option value="default" selected disabled hidden>Elegir...</option>
+                        <option value="metadatos">Metadatos</option>
+                        <option value="subtitulos">Subtítulos</option>
+                    </select>
+                </div>
+                <!-- Contenedor metadatos -->
+                <div id="container-metadatos" style="display: none">
+                    <!-- Fila marcas temporales -->
+                    <div class="row mb-4 m-auto">
+                        <div class="col-4 text-end">Tiempo:</div>
+                        <div class="col-8 row">
+                            <input type="text" id="md-inicio" class="col-4 font-size-input max-w150" disabled>
+                            <div class="col-1 text-center">-</div>
+                            <input type="text" id="md-fin" class="col-4 font-size-input max-w150" disabled>
+                        </div>
+                    </div>
+                    <!-- Fila nombre comun y cientifico -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="row">
+                                <div class="col-6 text-end">Nombre común:</div>
+                                <input type="text" id="md-nombreComun" class="col-6 font-size-input max-w150" required
+                                    minlength="1" maxlength="20" oninput="revisarCamposVacios()">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="row">
+                                <div class="col-6 text-end">Nombre científico:</div>
+                                <input type="text" id="md-nombreCientifico" class="col-6 font-size-input max-w150"
+                                    required minlength="1" maxlength="40" oninput="revisarCamposVacios()">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fila descripcion -->
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-10 ms-4 m-auto mt-1">
+                            <div class="row">Descripción:</div>
+                            <div class="row">
+                                <textarea id="md-descripcion" class="font-size-input" cols="40" rows="5"
+                                    oninput="revisarCamposVacios()"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                    <!-- Fila geoposicion -->
+                    <div class="row mt-4">
+                        <div class="col-md-4 mb-3">
+                            <div class="row">
+                                <div class="col-6 text-end">Latitud:</div>
+                                <input type="text" id="md-geoLat" class="col-6 font-size-input max-w120" required
+                                    minlength="1" maxlength="20" oninput="revisarCamposVacios()">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="row">
+                                <div class="col-6 text-end">Longitud:</div>
+                                <input type="text" id="md-geoLong" class="col-6 font-size-input max-w120" required
+                                    minlength="1" maxlength="20" oninput="revisarCamposVacios()">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="row">
+                                <div class="col-6 text-end">Continente:</div>
+                                <select class="col-6 max-w120 font-size-input input-color-w" id="md-continente"
+                                    onchange="revisarCamposVacios()">
+                                    <option value="default" selected disabled hidden>Elegir...</option>
+                                    <option value="africa">África</option>
+                                    <option value="asia">Asia</option>
+                                    <option value="america">América</option>
+                                    <option value="europa">Europa</option>
+                                    <option value="oceania">Oceanía</option>
+                                    <option value="antartida">Antártida</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fila medio, alimentacion y esqueleto -->
+                    <div class="row mt-2">
+                        <div class="col-md-4 mb-3">
+                            <div class="row">
+                                <div class="col-6 text-end">Medio:</div>
+                                <select class="col-6 max-w120 font-size-input input-color-w" id="md-medio"
+                                    onchange="revisarCamposVacios()">
+                                    <option value="default" selected disabled hidden>Elegir...</option>
+                                    <option value="tierra">Tierra</option>
+                                    <option value="agua">Agua</option>
+                                    <option value="aire">Aire</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="row">
+                                <div class="col-6 text-end">Alimentación:</div>
+                                <select class="col-6 max-w120 font-size-input input-color-w" id="md-alimentacion"
+                                    onchange="revisarCamposVacios()">
+                                    <option value="default" selected disabled hidden>Elegir...</option>
+                                    <option value="herbivoro">Herbívoro</option>
+                                    <option value="carnivoro">Carnívoro</option>
+                                    <option value="omnivoro">Omnívoro</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="row">
+                                <div class="col-6 text-end">Esqueleto:</div>
+                                <select class="col-6 max-w120 font-size-input input-color-w" id="md-esqueleto"
+                                    onchange="revisarCamposVacios()">
+                                    <option value="default" selected disabled hidden>Elegir...</option>
+                                    <option value="vertebrado">Vertebrado</option>
+                                    <option value="invertebrado">Invertebrado</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fila foto -->
+                    <div class="row mt-3 mb-4">
+                        <div class="col-2 text-end">Foto (URL):</div>
+                        <input type="text" id="md-foto" class="col-9 font-size-input" required minlength="1"
+                            oninput="revisarCamposVacios()">
+                    </div>
+                    <!-- Fila botones Inicio, Fin y Guardar -->
+                    <div class="row mt-4 mb-2 mg-l-md">
+                        <div class="col-2"></div>
+                        <div class="col-md-4 row mb-3">
+                            <div class="col-6 text-end">
+                                <button id="bt-inicio" type="button" class="boton" onclick="botonInicio()" disabled>Set
+                                    Inicio</button>
+                            </div>
+                            <div class="col-6 text-start">
+                                <button id="bt-fin" type="button" class="boton" onclick="botonFin()" disabled>Set
+                                    Final</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6 row">
+                            <div class="col-6 text-end">
+                                <button id="bt-eliminar" type="button" class="boton-eliminar" onclick="botonEliminar()"
+                                    disabled>Eliminar</button>
+                            </div>
+                            <div class="col-6 text-start">
+                                <button id="bt-guardar" type="button" class="boton-guardar" onclick="botonGuardar()"
+                                    disabled>Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fila boton "Subir al Servidor" -->
+                    <div class="row mb-4 mg-l-sm text-center">
+                        <div class="col-11">
+                            <button id="bt-subir" type="button" class="boton-subir" onclick="peticionSubirMetadatos()"
+                                disabled>Subir cambios al
+                                Servidor</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Contenedor metadatos -->
+
+                <!-- Contenedor subtitulos -->
+                <div id="container-subtitulos" style="display: none">
+                    <!-- Fila marcas temporales -->
+                    <div class="row mb-4 m-auto">
+                        <div class="col-4 text-end">Tiempo:</div>
+                        <div class="col-8 row">
+                            <input type="text" id="md-inicio" class="col-4 font-size-input max-w150" disabled>
+                            <div class="col-1 text-center">-</div>
+                            <input type="text" id="md-fin" class="col-4 font-size-input max-w150" disabled>
+                        </div>
+                    </div>
+                    <!-- Fila descripcion -->
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-10 ms-4 m-auto mt-1">
+                            <div class="row mt-3">Subtítulos Español:</div>
+                            <div class="row mb-2">
+                                <textarea id="md-español" class="font-size-input" cols="40" rows="5"
+                                    oninput="revisarCamposVacios()"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-1"></div>
+                        <div class="col-10 ms-4 m-auto mt-1">
+                            <div class="row">Subtítulos Inglés:</div>
+                            <div class="row mb-4">
+                                <textarea id="md-ingles" class="font-size-input" cols="40" rows="5"
+                                    oninput="revisarCamposVacios()"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                    <!-- Fila botones Inicio, Fin y Guardar -->
+                    <div class="row mt-4 mb-2 mg-l-md">
+                        <div class="col-2"></div>
+                        <div class="col-md-4 row mb-3">
+                            <div class="col-6 text-end">
+                                <button id="bt-inicio" type="button" class="boton" onclick="botonInicio()" disabled>Set
+                                    Inicio</button>
+                            </div>
+                            <div class="col-6 text-start">
+                                <button id="bt-fin" type="button" class="boton" onclick="botonFin()" disabled>Set
+                                    Final</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6 row">
+                            <div class="col-6 text-end">
+                                <button id="bt-eliminar" type="button" class="boton-eliminar" onclick="botonEliminar()"
+                                    disabled>Eliminar</button>
+                            </div>
+                            <div class="col-6 text-start">
+                                <button id="bt-guardar" type="button" class="boton-guardar" onclick="botonGuardar()"
+                                    disabled>Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fila boton "Subir al Servidor" -->
+                    <div class="row mb-4 mg-l-sm text-center">
+                        <div class="col-11">
+                            <button id="bt-subir" type="button" class="boton-subir" onclick="peticionSubirMetadatos()"
+                                disabled>Subir cambios al
+                                Servidor</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin Contenido Principal -->
+
+    <!-- Inicio Instrucciones -->
+    <div class="mg-top-md"></div>
+    <div class="cont-instrucciones m-auto">
+        <h3 id="instrucciones" class="text-center">Instrucciones</h3>
+        <div class="txt-instrucciones text-justify">
+            <h5>Los siguientes pasos te ayudarán a incluir metadatos/subtítulos a un vídeo nuevo o un vídeo ya
+                existente.</h5>
+            <div class="paso"><strong>1.</strong>&nbsp;&nbsp;Sube un vídeo de animales desde tu ordenador o selecciona
+                uno ya existente, usando los botones de la parte superior. (Aviso: Puede ser que tu navegador no soporte
+                los vídeos en webm).
+            </div>
+            <div class="paso"><strong>2.</strong>&nbsp;&nbsp;Selecciona del menú desplegable si quieres trabajar sobre
+                los metadatos o subtítulos del vídeo.
+            </div>
+            <div class="paso"><strong>3.</strong>&nbsp;&nbsp;Reproduce el vídeo y páusalo donde quieras que empiece un
+                bloque de datos.
+            </div>
+            <div class="paso"><strong>4.</strong>&nbsp;&nbsp;Si ya hay datos en ese punto aparecerán en el apartado
+                derecho. Si no, pulsa el botón de "Set Inicio".</div>
+            <div class="paso"><strong>5.</strong>&nbsp;&nbsp;Sigue reproduciendo el vídeo hasta donde quieras que duren
+                los datos,
+                pon pausa y pulsa el botón "Set Final".</div>
+            <div class="paso"><strong>6.</strong>&nbsp;&nbsp;Rellena todos los campos de datos y pulsa el botón
+                "Guardar" para guardar los datos (en local).</div>
+            <div class="paso"><strong>7.</strong>&nbsp;&nbsp;Si quieres eliminar un bloque de datos pon pausa en el
+                momento en que se esté reproduciendo el bloque y pulsa el botón "Eliminar".
+            </div>
+            <div class="paso"><strong>8.</strong>&nbsp;&nbsp;Puedes modificar el tiempo de inicio y fin de los datos que
+                aún no están guardados usando los botones "Set Inicio" y "Set Final".
+            </div>
+            <div class="paso"><strong>9.</strong>&nbsp;&nbsp;También puedes desplazarte a los momentos del vídeo donde
+                hay datos usando el menú desplegable de la Vista Previa.
+            </div>
+            <div class="paso"><strong>10.</strong>&nbsp;&nbsp;Para subir los cambios al servidor pulsa el botón "Subir
+                cambios al Servidor".
+            </div>
+            <div class="paso mg-bt-lg-neg"><strong>11.</strong>&nbsp;&nbsp;Si ya has terminado y quieres modificar otro
+                vídeo o el
+                tipo de datos (metadatos/subtítulos) simplemente recarga la página.
+            </div>
+        </div>
+    </div>
+    <!-- Fin Instrucciones -->
+
+
+    
+
+    <!-- Inicio Footer -->
+    <footer id="footer" class="bg-dark">
+        <div class="container pt-3 pb-2">
+            <div class="row">
+                <div class="col text-center my-auto">
+                    <a id="faunaFooter" class="greenHighlight" href="#">
+                        Fauna Salvaje
+                    </a>
+                </div>
+                <div class="col text-center my-auto">
+                    <a id="gitFooter" class="greenHighlight no-padding-bottom"
+                        href="https://github.com/carlosveny/GDIE-fauna-salvaje" target="_blank">
+                        Repositorio GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-center p-1 text-white" style="font-size: 12px; background-color: rgba(0, 0, 0, 0.2);">
+            © 2022 Copyright: FaunaSalvaje
+        </div>
+    </footer>
+    <!-- Fin Footer -->
+</body>
+
+</html>
