@@ -1,0 +1,221 @@
+.bg {
+  background-color: rgb(91, 224, 245);
+}
+
+/* Contenedor del video */
+.wrapper-video {
+  position: relative;
+  margin: auto;
+  width: 90%;
+  overflow: hidden;
+}
+
+/* Aviso en el centro del video */
+.aviso-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: cian;
+  background-color: rgb(250, 132, 132);
+  font-size: 1rem;
+}
+
+/* Letras y tamaños de los text inputs */
+.font-size-input {
+  font-size: 0.8rem;
+  resize: none;
+}
+.font-size-input-2 {
+  height: 26px;
+  font-size: 0.9rem;
+  resize: none;
+}
+.input-color-w {
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid #858585;
+}
+.input-color-w:disabled {
+  background-color: rgb(245, 245, 245);
+  border-radius: 4px;
+  border: 1px solid #858585;
+}
+.max-w180 {
+  max-width: 180px;
+}
+.max-w150 {
+  max-width: 150px;
+}
+.max-w120 {
+  max-width: 120px;
+}
+.max-w100 {
+  max-width: 100px;
+}
+.max-w-files {
+  font-size: 0.95rem;
+}
+
+/* Margenes */
+.mg-bt-sm-neg {
+  margin-bottom: -3px;
+}
+.mg-bt-lg-neg {
+  margin-bottom: -70px;
+}
+.mg-top-md {
+  margin-top: 75px;
+}
+.mg-l-sm {
+  margin-left: 100px;
+}
+.mg-l-md {
+  margin-left: 0px;
+}
+
+/* Estilo del apartado de instrucciones */
+.cont-instrucciones {
+  width: 55%;
+}
+.txt-instrucciones {
+  font-size: 1.1rem;
+}
+
+/* Botones */
+.boton {
+  background-color: #000;
+  border-radius: 4px;
+  border: 1px solid #858585;
+  width: 100px;
+}
+.boton:hover:enabled {
+  background-color: #c0d8ff;
+}
+.boton-eliminar {
+  background-color: #ffd6d6;
+  border-radius: 4px;
+  border: 1px solid #858585;
+  width: 100px;
+}
+.boton-eliminar:hover:enabled {
+  background-color: #ffb7b7;
+}
+.boton-guardar {
+  background-color: #ebf52f;
+  border-radius: 4px;
+  border: 1px solid #858585;
+  width: 100px;
+}
+.boton-guardar:hover:enabled {
+  background-color: #bfffb7;
+}
+.boton-subir {
+  background-color: #fff2d6;
+  border-radius: 4px;
+  border: 1px solid #858585;
+  width: 240px;
+  font-size: 1.1rem;
+}
+.boton-subir:hover:enabled {
+  background-color: #ffe8b7;
+}
+
+/* Mostrar/ocultar metadatos o subtitulos */
+/* #container-metadatos {
+  font-size: 1rem;
+  display: none;
+}
+#container-subtitulos {
+  font-size: 1rem;
+  display: none;
+} */
+
+/* Aviso flotante (https://codepen.io/Dinamo/pen/rNVOZmr) */
+.myAlert-top{
+  position: fixed;
+  top: 90px; 
+  left: 25%;
+  width: 50%;
+}
+
+/* Centered login (https://stackoverflow.com/questions/22658141/css-center-form-in-page-horizontally-and-vertically) */
+#parent {
+  display: table;
+  width: 20%;
+}
+#form_login {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+.centered-login{
+  position: fixed;
+  top: 100px; 
+  /* left: 40%; */
+  left: calc(50vw - 160px);
+  max-width: 320px;
+  min-width: 320px;
+  height: 160px;
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid #858585;
+}
+
+/* Web responsive*/
+@media (max-width: 1500px) {
+  .cont-instrucciones {
+    width: 60%;
+  }
+}
+@media (max-width: 1200px) {
+  .cont-instrucciones {
+    width: 70%;
+  }
+  .myAlert-top{
+    left: 15%;
+    width: 70%;
+  }
+  .mg-bt-lg-neg {
+    margin-bottom: -90px;
+  }
+}
+@media (max-width: 900px) {
+  .cont-instrucciones {
+    width: 80%;
+  }
+  .aviso-centered {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 767px) {
+  .mg-l-sm {
+    margin-left: 20px;
+  }
+  .myAlert-top{
+    left: 5%;
+    width: 90%;
+  }
+  .mg-bt-lg-neg {
+    margin-bottom: -100px;
+  }
+}
+@media (max-width: 600px) {
+  .centered {
+    font-size: 0.7rem;
+  }
+  .cont-instrucciones {
+    width: 95%;
+  }
+}
+@media (max-width: 500px) {
+  .mg-l-sm {
+    margin-left: 10px !important;
+  }
+}
+@media (max-width: 400px) {
+  .max-w-files {
+    width: 70%;
+    font-size: 0.8rem;
+  }
+}
